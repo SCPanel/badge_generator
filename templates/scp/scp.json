@@ -1,0 +1,58 @@
+{
+    "template": "scp_level_5.png",
+    "avatar": "AVATAR.png",
+    "root_id": "scp",
+    "font": {
+        "path": "THPTB.ttf",
+        "size": 64
+    },
+    "avatar_position": {
+        "x": 108,
+        "y": 442
+    },
+    "optional": [
+        {
+            "condition": ["bool", "light", "template"],
+            "light": true,
+            "value": "scp_level_5_light.png"
+        }
+    ],
+    "components": [
+        {
+            "type": "text",
+            "value": "IHOR I. SAVENKO",
+            "position": {
+                "x": 634,
+                "y": 554
+            }
+        },
+        {
+            "type": "text",
+            "value": "MALE",
+            "position": {
+                "x": 634,
+                "y": 670
+            }
+        },
+        {
+            "type": "text",
+            "value": "2025/02",
+            "position": {
+                "x": 634,
+                "y": 786
+            }
+        },
+        {
+            "type": "text",
+            "value": "N-135251213639",
+            "condition": [
+                ["prefix", "N-"],
+                ["length", "max", 14]
+            ],
+            "position": {
+                "x": 634,
+                "y": 896
+            }
+        }
+    ]
+}
