@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
-from app.core.generator import generate_badge
+from app.core.generator import Generator
 
 
 def get_application():
@@ -34,7 +34,7 @@ async def index_event():
 async def scp_level_5_template_event():
     _config = open("templates/scp/scp.json")
     _config = json.load(_config)
-    await generate_badge(_config)
+    await Generator.from_json(_config)
     return {
         "message": "In process.",
         "_config": _config
