@@ -7,6 +7,7 @@ database_client = motor.motor_asyncio.AsyncIOMotorClient(settings.DATABASE_ADDRE
 database = database_client["SCPanel"]
 
 applications_db = database["applications"]
+foundations_db = database["foundations"]
 
 async def insert_one(_db, data):
     return await globals()[_db].insert_one(data)

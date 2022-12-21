@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.generator import Generator
 
+from app.v1 import v1_router
 
 def get_application():
     _app = FastAPI(title=settings.PROJECT_NAME)
@@ -23,6 +24,7 @@ def get_application():
 
 app = get_application()
 
+app.include_router(v1_router)
 
 @app.get("/")
 async def index_event():
