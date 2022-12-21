@@ -4,10 +4,7 @@ from app.core.database import (
     insert_one,
     delete_one
 )
-from app.core.secret import (
-    generate_password,
-    password_hash
-)
+from app.core.secret import Password
 from app.core.error import raise_error_event
 from app.core.generate_id import generate_id
 
@@ -23,8 +20,9 @@ async def approve_application_event(id: str):
         return await raise_error_event(404, "Application not found.")
     
     foundation = application
-    _temp_password = await generate_password() # dont forget send that shit via email
-    _hashed_temp_password = await password_hash(_temp_password)
+
+    _temp_password = Password() # dont forget send that shit via email
+    _temp_password.generate()
 
     foundation["_id"] = await generate_id("foundations_db")
     foundation["metadata"] = {
@@ -35,5 +33,5 @@ async def approve_application_event(id: str):
         },
         "is_default_password": True
     }
-    foundation["password"] = _hashed_temp_password
+    foundation["password"] = _temp_password.hash
     foundation["project_details"]
