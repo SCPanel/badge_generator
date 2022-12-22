@@ -12,10 +12,10 @@ class Password():
         self.password = "".join(random.sample(string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation, length))
     
     @property
-    def hash(self):
+    def hash(self) -> str:
         return hashlib.sha256((self.password+settings.HASH_SALT).encode()).hexdigest()
     
     @property
-    def hex(self):
+    def hex(self) -> str:
         return self.password
     
