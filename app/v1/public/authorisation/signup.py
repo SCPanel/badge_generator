@@ -1,13 +1,11 @@
 from fastapi import APIRouter
-from os import getenv
-from dotenv import load_dotenv
+from app.core.config import settings
 from app.core.schemas.foundation_application import FoundationApplication
 from app.core.database import find_one, insert_one
 from app.core.email.mail import send_message
 from app.core.error import raise_error_event
 from app.core.generate_id import generate_id
 
-load_dotenv()
 
 signup_router = APIRouter(prefix="/signup")
 
@@ -35,7 +33,7 @@ async def new_foundation_application_event(application: FoundationApplication):
     await insert_one("applications_db", _application)
 
     await send_message(
-        email=getenv("applications_team_email"),
+        email=settings.APPLICATIONS_TEAM_EMAIL,
         subject="New Foundation Application",
         content=f"""
         Id: {_application["_id"]} <br>

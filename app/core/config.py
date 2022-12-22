@@ -3,12 +3,16 @@ from typing import List, Union
 from pydantic import AnyHttpUrl, BaseSettings, validator
 
 
-
 class Settings(BaseSettings):
     PROJECT_NAME: str
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
     DATABASE_ADDRESS: str
     HASH_SALT: str
+    CONTACT_EMAIL_PASSWORD: str
+    CONTACT_EMAIL: str 
+    APPLICATIONS_TEAM_EMAIL: str
+    SECRET_KEY: str
+
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
     def assemble_cors_origins(cls, v: Union[str, List[str]]) -> Union[List[str], str]:
