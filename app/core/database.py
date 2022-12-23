@@ -8,12 +8,14 @@ database = database_client["SCPanel"]
 
 applications_db = database["applications"]
 foundations_db = database["foundations"]
+users_db = database["users"]
+admins_db = database["admins"]
 
 async def insert_one(_db, data):
     return await globals()[_db].insert_one(data)
 
 
-async def insert_many(_db, data):
+async def insert(_db, data):
      return await globals()[_db].insert_many(data)
 
 
@@ -32,3 +34,6 @@ async def update_one(_db, search_data, new_data):
 
 async def delete_one(_db, query):
     await globals()[_db].delete_one(query)
+
+async def delete(_db, query):
+    await globals()[_db].delete_many(query)
