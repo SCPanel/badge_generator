@@ -140,3 +140,5 @@ cython_debug/
 # Text Editor
 .vscode
 .VSCodeCounter
+templates/*
+!templates/scp/
