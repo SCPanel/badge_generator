@@ -10,7 +10,7 @@ class Password():
     
     def generate(self, length=20):
         self.password = "".join(random.sample(string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation, length))
-    
+
     @property
     def hash(self) -> str:
         return hashlib.sha256((self.password+settings.HASH_SALT).encode()).hexdigest()
@@ -19,3 +19,6 @@ class Password():
     def hex(self) -> str:
         return self.password
     
+    @hex.setter
+    def hex_set(self, value):
+        self.password = value
