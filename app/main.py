@@ -1,10 +1,12 @@
 import json
+# from os import environ
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.core.generator import Generator
+# from app.core.secret import Password
 
 from app.v1 import v1_router
 
@@ -25,6 +27,14 @@ def get_application():
 app = get_application()
 
 app.include_router(v1_router)
+
+
+# @app.on_event("startup")
+# async def startup_event():
+#     _password = Password()
+#     _password.generate()
+#     environ['SECRET_KEY'] = _password.hex
+
 
 @app.get("/")
 async def index_event():
