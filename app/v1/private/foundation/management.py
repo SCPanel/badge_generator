@@ -1,3 +1,4 @@
+from shutil import rmtree
 from fastapi import APIRouter
 from app.core.database import find_one, delete_one, delete
 
@@ -10,5 +11,7 @@ async def delete_foundation_event(id: str):
     
     await delete_one("foundations_db", {"_id": id})
     await delete("users_db", {"alias": id})
+
+    rmtree(f"templates/{id}")	
 
     return {"message": "ok."}
