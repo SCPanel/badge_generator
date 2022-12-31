@@ -56,7 +56,8 @@ async def approve_application_event(id: str):
         "email": foundation["email"],
         "password": _user_temp_password.hash,
         "secret_key": _user_secret_key.hash,
-        "alias": foundation["_id"]
+        "alias": foundation["_id"],
+        "interrnal_alias": ""
     }
     foundation["owner"] = user["_id"]
 
