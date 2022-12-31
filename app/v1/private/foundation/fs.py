@@ -32,13 +32,13 @@ async def upload_file(id: str, file: UploadFile, file_name: str, allowed_extensi
     return {"message": "file uploaded!"}
 
 @fs_router.post("/{id}/upload/template")
-async def upload_template_event(id: str, file: UploadFile = File(...), current_user: Dict[str, Any] = Depends(get_current_user)):
+async def upload_template_event(id: str, file: UploadFile = File(...)):#, current_user: Dict[str, Any] = Depends(get_current_user)
     return await upload_file(id, file, "template", [".png"])
 
 @fs_router.post("/{id}/upload/default_avatar")
-async def upload_default_avatar_event(id: str, file: UploadFile = File(...), current_user: Dict[str, Any] = Depends(get_current_user)):
+async def upload_default_avatar_event(id: str, file: UploadFile = File(...)):
     return await upload_file(id, file, "avatar", [".png"])
 
 @fs_router.post("/{id}/upload/font")
-async def upload_font_event(id: str, file: UploadFile = File(...), current_user: Dict[str, Any] = Depends(get_current_user)):
+async def upload_font_event(id: str, file: UploadFile = File(...)):
     return await upload_file(id, file, "font", [".ttf"])
