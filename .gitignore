@@ -142,3 +142,4 @@ cython_debug/
 .VSCodeCounter
 templates/*
 !templates/scp/
+!templates/_template.json

@@ -1,0 +1,16 @@
+{
+    "template": "template.png",
+    "avatar": "avatar.png",
+    "root_id": "",
+    "font": {
+        "path": "font.ttf",
+        "size": 0
+    },
+    "avatar_position": {
+        "x": 0,
+        "y": 0
+    },
+    "optional": [],
+    "components": [],
+    "owner": ""
+}
