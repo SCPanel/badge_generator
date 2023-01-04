@@ -13,6 +13,9 @@ async def delete_foundation_event(id: str):
     await delete_one("foundations_db", {"_id": id})
     await delete("users_db", {"alias": id})
 
-    rmtree(f"templates/{id}")	
+    try:
+        rmtree(f"templates/{id}")	
+    except:
+        pass
 
     return {"message": "ok."}
